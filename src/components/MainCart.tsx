@@ -1,4 +1,4 @@
-function MainCart ({getItemImagePath ,storeItems}) {
+function MainCart ({getItemImagePath ,storeItems,getTotalPrice,}) {
 
   return (
   <main id='cart'>
@@ -16,8 +16,8 @@ function MainCart ({getItemImagePath ,storeItems}) {
                 </div>
                 <div className='.cart--item-name'>{item.name}</div>
                 <div className='.cart--item-quantity'>{item.inCart}</div>
-                <button>+</button>
-                <button>-</button>
+                <button className="add-btn">Add</button>
+                <button className="remove-btn ">Remove</button>
               </li>
             ))}
           </ul>
@@ -32,7 +32,9 @@ function MainCart ({getItemImagePath ,storeItems}) {
 
           <div>
             <span className='total-number'>
-              Total: 
+              Total: {
+                getTotalPrice()
+              }
             
             </span>
           </div>
