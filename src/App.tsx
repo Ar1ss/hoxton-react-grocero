@@ -12,6 +12,7 @@ function App () {
     inCart: number
   }
 
+
   const [storeItems, setstoreItems] = useState([
     {
       id: 1,
@@ -75,17 +76,38 @@ function App () {
     }
   ])
 
-  function addToCart (id: number) {
-    setstoreItems(storeItems.map((item: Item) => {
-      if (item.id === id) {
-        item.inCart += 1
+  function increaseQuantity (item: Item) {
+    setstoreItems(storeItems.map(storeItem => {
+      if (storeItem.id === item.id) {
+        return {
+          ...storeItem,
+          inCart: storeItem.inCart + 1
+        }
       }
-      return item
+      return storeItem
     }))
   }
 
-  function getTotalPrice () {
-    return storeItems.reduce((acc, item) => acc + item.price * item.inCart, 0)
+  function decreseQuantity (item: Item) {
+    setstoreItems(storeItems.map(storeItem => {
+      if (storeItem.id === item.id) {
+        return {
+          ...storeItem,
+          inCart: storeItem.inCart - 1
+        }
+      }
+      return storeItem
+    }))
+  }
+
+
+
+  function getTotal () {
+    let total = 0
+    storeItems.map(item => {
+      total += item.price * item.inCart
+    })
+    return total
   }
 
   function getItemImagePath (item: Item) {
@@ -97,13 +119,15 @@ function App () {
       <StoreHeader
         getItemImagePath={getItemImagePath}
         storeItems={storeItems}
-        addToCart={addToCart}
+        increaseQuantity={increaseQuantity}
       />
 
-      <MainCart 
-      getItemImagePath={getItemImagePath} 
-      storeItems={storeItems}
-      getTotalPrice={getTotalPrice}   
+      <MainCart
+        getItemImagePath={getItemImagePath}
+        storeItems={storeItems}
+        getTotal={getTotal}
+        increaseQuantity={increaseQuantity}
+        decreseQuantity={decreseQuantity}
       />
     </body>
   )

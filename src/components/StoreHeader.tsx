@@ -1,4 +1,4 @@
-function StoreHeader ({getItemImagePath, storeItems , addToCart}) {
+function StoreHeader ({getItemImagePath, storeItems, increaseQuantity}) {
     return (
         <header id='store'>
         <h1>Grocero</h1>
@@ -10,9 +10,11 @@ function StoreHeader ({getItemImagePath, storeItems , addToCart}) {
                   getItemImagePath(item)
                 } />
               </div>
-              <button>
-                Add to cart
-                </button>
+              <button onClick={
+                () => increaseQuantity(item)
+              }>
+                 Add to cart
+             </button>
             </li>
           ))}
         </ul>

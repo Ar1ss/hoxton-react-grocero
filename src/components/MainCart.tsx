@@ -1,4 +1,5 @@
-function MainCart ({getItemImagePath ,storeItems,getTotalPrice,}) {
+function MainCart ({getItemImagePath ,storeItems,getTotal,
+  increaseQuantity,decreseQuantity}) {
 
   return (
   <main id='cart'>
@@ -16,8 +17,20 @@ function MainCart ({getItemImagePath ,storeItems,getTotalPrice,}) {
                 </div>
                 <div className='.cart--item-name'>{item.name}</div>
                 <div className='.cart--item-quantity'>{item.inCart}</div>
-                <button className="add-btn">Add</button>
-                <button className="remove-btn ">Remove</button>
+                <button className="add-btn"
+                  onClick={
+                    () => increaseQuantity(item)
+                  }
+                >Add
+                </button>
+                <button
+                onClick={
+                  () => decreseQuantity(item)
+                }
+                 className="remove-btn ">
+                  Remove
+                
+                </button>
               </li>
             ))}
           </ul>
@@ -33,7 +46,7 @@ function MainCart ({getItemImagePath ,storeItems,getTotalPrice,}) {
           <div>
             <span className='total-number'>
               Total: {
-                getTotalPrice()
+                getTotal()
               }
             
             </span>
