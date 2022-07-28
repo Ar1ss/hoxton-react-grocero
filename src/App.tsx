@@ -1,9 +1,17 @@
 import { useState } from 'react'
 import './App.css'
-import Main from '../components/MainCart'
-import Header from '../components/StoreHeader'
+
+import MainCart from './components/MainCart'
+import StoreHeader from './components/StoreHeader'
 
 function App () {
+  type Item = {
+    id: number,
+    name: string,
+    price: number,
+    inCart: number
+  }
+ 
   const [storeItems, setstoreItems] = useState([
     {
       id: 1,
@@ -65,14 +73,29 @@ function App () {
       price: 0.35,
       inCart: 10,
     },
-  ])
+])
+
+function getItemImagePath(item : Item) {
+  let id = String(item.id).padStart(3, "0");
+  return `src/icons/${id}-${item.name}.svg`;
+}
   return (
     <body>
-      <Header />
 
-      <Main />
+      <StoreHeader
+        getItemImagePath={getItemImagePath}
+        storeItems={storeItems}
+        />
+
+      <MainCart 
+      getItemImagePath={getItemImagePath}
+      storeItems={storeItems}
+      />
     </body>
   )
 }
+
+
+
 
 export default App
