@@ -1,193 +1,76 @@
-
+import { useState } from 'react'
 import './App.css'
+import Main from '../components/MainCart'
+import Header from '../components/StoreHeader'
 
 function App () {
+  const [storeItems, setstoreItems] = useState([
+    {
+      id: 1,
+      name: "beetroot",
+      price: 0.40,
+      inCart: 0,
+    },
+    {
+      id: 2,
+      name: "carrot",
+      price: 0.35,
+      inCart: 2,
+    },
+    {
+      id: 3,
+      name: "apple",
+      price: 0.35,
+      inCart: 3,
+    },
+    {
+      id: 4,
+      name: "apricot",
+      price: 0.35,
+      inCart: 4,
+    },
+    {
+      id: 5,
+      name: "avocado",
+      price: 0.35,
+      inCart: 5,
+    },
+    {
+      id: 6,
+      name: "bananas",
+      price: 0.35,
+      inCart: 6,
+    },
+    {
+      id: 7,
+      name: "bell-pepper",
+      price: 0.35,
+      inCart: 7,
+    },
+    {
+      id: 8,
+      name: "berry",
+      price: 0.35,
+      inCart: 8,
+    },
+    {
+      id: 9,
+      name: "blueberry",
+      price: 0.35,
+      inCart: 9,
+    },
+    {
+      id: 10,
+      name: "eggplant",
+      price: 0.35,
+      inCart: 10,
+    },
+  ])
   return (
     <body>
-      <script type='module' src='/src/main.ts'></script>
-      <header id='store'>
-        <h1>Grocero</h1>
-        <ul className='item-list store--item-list'>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/001-beetroot.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/002-carrot.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/003-apple.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/004-apricot.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/005-avocado.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/006-bananas.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/007-bell-pepper.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/008-berry.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/009-blueberry.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-          <li>
-            <div className='.store--item-icon'>
-              <img src='src/icons/010-eggplant.svg' />
-            </div>
-            <button>Add to cart</button>
-          </li>
-        </ul>
-      </header>
+      <Header />
 
-      <main id='cart'>
-        <h2>Your Cart</h2>
-
-        <div className='cart--item-list-container'>
-          <ul className='item-list cart--item-list'>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/002-carrot.svg'
-                alt='carrot'
-              />
-              <p>carrot</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>2</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/003-apple.svg'
-                alt='apple'
-              />
-              <p>apple</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>3</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/004-apricot.svg'
-                alt='apricot'
-              />
-              <p>apricot</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>4</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/005-avocado.svg'
-                alt='avocado'
-              />
-              <p>avocado</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>5</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/006-bananas.svg'
-                alt='bananas'
-              />
-              <p>bananas</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>6</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/007-bell-pepper.svg'
-                alt='bell-pepper'
-              />
-              <p>bell-pepper</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>7</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/008-berry.svg'
-                alt='berry'
-              />
-              <p>berry</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>8</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/009-blueberry.svg'
-                alt='blueberry'
-              />
-              <p>blueberry</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>9</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-            <li>
-              <img
-                className='cart--item-icon'
-                src='src/icons/010-eggplant.svg'
-                alt='eggplant'
-              />
-              <p>eggplant</p>
-              <button className='quantity-btn remove-btn center'>-</button>
-              <span className='quantity-text center'>10</span>
-              <button className='quantity-btn add-btn center'>+</button>
-            </li>
-          </ul>
-        </div>
-
-        <div className='total-section'>
-          <div>
-            <h3>Total</h3>
-          </div>
-
-          <div>
-            <span className='total-number'>Total: 18.90</span>
-          </div>
-        </div>
-      </main>
+      <Main />
     </body>
   )
 }
